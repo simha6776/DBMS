@@ -1,0 +1,177 @@
+DBMS LAB MANUAL MMCL106
+
+Dept. of CSE, VTU CPGS, MYSURU 8
+
+2. Consider the following schema: STUDENT (USN, name, date_of_birth, branch, mark1, mark2,
+
+mark3, total,GPA) Execute the following queries:
+
+CREATE TABLE STUDENT(
+
+USN VARCHAR(30) PRIMARY KEY, 
+
+NAME VARCHAR(30), 
+
+DATE_OF_BIRTH DATE,
+
+BRANCH VARCHAR(30), 
+
+MARKS1 INT,
+
+MARKS2 INT, 
+
+MARKS3 INT, 
+
+TOTAL INT, 
+
+GPA FLOAT
+
+);
+
+INSERT INTO STUDENT VALUES('1001','AMAR','12-JUN-
+
+2001','MCA',89,82,92,0,0); 
+
+INSERT INTO STUDENT VALUES('1002','AKBAR','12-JUN-
+
+1999','MCA',70,65,91,0,0); 
+
+INSERT INTO STUDENT VALUES('1003','SANJAY','12-JUN-2001','MBA',69,90,90,0,0); 
+
+INSERT INTO STUDENT VALUES('1004','SAGAR','12-JUN-
+
+2000','MBA',78,80,91,0,0);
+
+INSERT INTO STUDENT VALUES('1005','ADHI','12-JUN-
+
+1999','MBA',59,70,92,0,0); 
+
+INSERT INTO STUDENT VALUES('1007','LOKESH','12-JUN-
+
+01','MCA',52,52,93,0,0);
+
+ i.Update the column total by adding the columns mark1, mark2, mark3.
+
+6 rows updated.
+
+i. Update the column total by adding the columns mark1, mark2, mark3.
+
+ii. Find the GPA score of all the students.
+
+iii. Find the students who born on a particular year of birth from the date_of_birth column.
+
+iv. List the students who are studying in a particular branch of study.
+
+v. Find the maximum GPA score of the student branch-wise.
+
+vi. Find the students whose name starts with the alphabet “S”.
+
+vii. Find the students whose name ends with the alphabets “AR”.
+
+viii. Delete the student details whose USN is given as 1001
+
+UPDATE STUDENT
+
+SET TOTAL = MARKS1 + MARKS2 + MARKS3;
+
+DBMS LAB MANUAL MMCL106
+
+Dept. of CSE, VTU CPGS, MYSURU 9
+
+ii. Find the GPA score of all the students.
+
+6 rows updated.
+
+iii. Find the students who born on a particular year of birth from the date_of_birth column.
+
+USN NAME DATE_OF_ BIRTH BRANCH MARKS1 MARKS2 MARKS3 TOTAL GPA
+
+1002 AKBAR 12-JUN-99 MCA 70 65 91 226 7.53333333
+
+1005 ADHI 12-JUN-99 MBA 59 70 92 221 7.36666667
+
+iv. List the students who are studying in a particular branch of study.
+
+USN NAME DATE_OF_ BIRTH BRANCH MARKS1 MARKS2 MARKS3 TOTAL GPA
+
+1001 AMAR 12-JUN-01 MCA 89 82 92 263 8.76666667
+
+1002 AKBAR 12-JUN-99 MCA 70 65 91 226 7.53333333
+
+1007
+
+LOKESH
+
+12-JUN-01 MCA 52 52 93 197 6.56666667
+
+v. Find the maximum GPA score of the student branch-wise.
+
+BRANCH MAX(GPA)
+
+MBA 8.3
+
+MCA 8.76666667
+
+UPDATE STUDENT
+
+SET GPA = (TOTAL / 30);
+
+SELECT *
+
+FROM STUDENT
+
+WHERE DATE_OF_BIRTH LIKE '%99';
+
+SELECT *
+
+FROM STUDENT
+
+WHERE BRANCH = 'MCA';
+
+SELECT BRANCH,MAX(GPA) 
+
+FROM STUDENT
+
+GROUP BY BRANCH;
+
+
+DBMS LAB MANUAL MMCL106
+
+Dept. of CSE, VTU CPGS, MYSURU 10
+
+vi. Find the students whose name starts with the alphabet “S”.
+
+NAME
+
+SANJAY 
+
+SAGAR
+
+Vii, Find the students whose name ends with the alphabets “AR”.
+
+NAME
+
+AMAR 
+
+AKBAR 
+
+SAGAR
+
+viii. Delete the student detailswhose USN is given as 1001
+
+1 rowdeleted.
+
+SELECT NAME 
+
+FROM STUDENT
+
+WHERE NAME LIKE 'S%';
+
+SELECT NAME 
+
+FROM STUDENT
+
+WHERE NAME LIKE '%AR';
+
+DELETE FROM STUDENT WHERE USN = '1001';
+
